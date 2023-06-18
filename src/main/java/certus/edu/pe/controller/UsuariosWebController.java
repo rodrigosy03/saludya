@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import certus.edu.pe.modelo.Usuarios;
-import certus.edu.pe.servicios.UsuariosServicio;
+import certus.edu.pe.modelo.Usuario;
+import certus.edu.pe.servicios.UsuarioService;
 @Controller
 @RequestMapping("/usuarios")
 public class UsuariosWebController {
 
 	@Autowired // inyeccción de dependencia
-	private UsuariosServicio servicio;
+	private UsuarioService usuarioServicio;
 	
 	@RequestMapping("/listarUsuario")
 	public String listarUsuarios(Model model) {
-		List<Usuarios> listaUsuarios = servicio.buscarTodo();
+		List<Usuario> listaUsuarios = usuarioServicio.buscarTodos();
 		System.out.println("LISTA DE USUARIOS : " + listaUsuarios);
 		model.addAttribute("listarUsuarios", listaUsuarios);
 		return "/moduloUsuarios/listarUsuarios";
@@ -30,22 +30,22 @@ public class UsuariosWebController {
 
 	@RequestMapping("/nuevo")
 	public String nuevoUsuarios(Model model) {
-		Usuarios usuarios = new Usuarios();
+		Usuario usuarios = new Usuario();
 		model.addAttribute("usuarios", usuarios);
 		return "/moduloUsuarios/nuevoUsuarios";
 		
 	}
 	
 	@RequestMapping(value = "/guardar" , method = RequestMethod.POST)
-	public String crearUsuario(@ModelAttribute("usuarios") Usuarios usuarios) {
-		    servicio.crear(usuarios);
+	public String crearUsuario(@ModelAttribute("usuarios") Usuario usuarios) {
+		    usuarioServicio.crearUsuario(usuarios);
 		    return "redirect:/usuarios/listarUsuario";
 	
 	}
 	
 	@RequestMapping(value ="/eliminar/{id}")
 	public String eliminarUsuario(@PathVariable(name = "id") int id) {
-		  servicio.borrarPorId(id);
+		  usuarioServicio.eliminarUsuario(id);
 		 return "redirect:/usuarios/listarUsuario";
 		
 	}
@@ -53,7 +53,7 @@ public class UsuariosWebController {
 	@RequestMapping(value = "/actualizar/{id}")
 	public ModelAndView editarUsuario(@PathVariable(name = "id") int id) {
 	    ModelAndView mav = new ModelAndView("/moduloUsuarios/editarUsuarios");
-	    Usuarios usuarios = servicio.buscarPorId(id);
+	    Usuario usuarios = usuarioServicio.buscarUsuarioPorId(id);
 	    mav.addObject("usuarios", usuarios);
 	    return mav;
 	}
