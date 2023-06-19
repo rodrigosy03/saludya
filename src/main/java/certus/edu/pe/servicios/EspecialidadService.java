@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import certus.edu.pe.modelo.Especialidad;
 import certus.edu.pe.repositorio.EspecialidadRepository;
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
