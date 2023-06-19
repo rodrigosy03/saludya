@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="layout/layout :: head">
+		<meta charset="ISO-8859-1">
+		<title>Editar Usuario</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <!-- Latest compiled JavaScript -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.33/dist/sweetalert2.all.min.js"></script>
+        <style>
+.main {
+	padding-top: 20px;
+}
+
+.pagetitle {
+	margin-bottom: 20px;
+}
+
+.breadcrumb {
+	background-color: transparent;
+	margin-bottom: 0;
+}
+
+.card-title {
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.table-responsive {
+	margin-bottom: 20px;
+	overflow-x: auto;
+}
+
+.table td, .table th {
+	white-space: nowrap;
+}
+</style>
+	</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<aside th:replace="layout/layout :: sidebar"></aside>
+	<main id="main" class="main">
+	<div class="pagetitle">
+				<h1 th:text="${titulo}"></h1>
+				<nav>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="/saludYa/home">Inicio</a></li>
+						<li class="breadcrumb-item"><a th:href="@{/especialidades/listar}">Especialidades</a></li>
+						<li class="breadcrumb-item active">Tabla</li>
+					</ol>
+				</nav>
+			</div>
+	<div class="container" align="center">
+		<br>
+		<h1>Nueva Especialidad</h1>
+		<br />
+		<form action="#" th:action="@{/especialidades/guardar}" th:object="${especialidad}" method="post">
+			<table border="0" cellpadding="10">
+				
+				<tr>
+					<td><label class="form-label">Nombre:</label></td>
+					<td><input class="form-control" type="text" th:field="*{nombre}" /></td>
+				</tr>
+				
+				<tr>
+					<div>
+						<label for="cursos">Areas medicas:</label> 
+							<select id="idAreaMedica" th:field="*{areaMedica.idAreaMedica}">
+							<option th:each="area_medica : ${listaAreasMedicas}"
+								th:value="${area_medica.idAreaMedica}" th:text="${area_medica.nombre}">
+							</option>
+						</select>
+					</div>
+				</tr>
+				
+				
+				<tr>
+					<td colspan="2"><button class="btn btn-success"type="submit"> Guardar </button></td>
+				</tr>		
+				<tr> <td ><a class="btn btn-info" th:href="@{/especialidades/listar}">Cancelar</a></td> </tr>
+			</table>
+		</form>
+	</div>
+	</main>
+</body>
+</html>

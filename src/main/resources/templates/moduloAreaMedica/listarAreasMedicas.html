@@ -1,0 +1,55 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="layout/layout :: head">
+</head>
+
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<aside th:replace="layout/layout :: sidebar"></aside>
+	<main id="main" class="main">
+		<div class="pagetitle">
+			<h1>LISTA DE AREAS MEDICAS</h1>
+			<nav>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/saludYa/home">Home</a></li>
+					<li class="breadcrumb-item active">AreasMedicas</li>
+				</ol>
+			</nav>
+		</div>
+		<section class="section dashboard">
+			<div class="row">
+				<div class="container">
+		<a class="btn btn-success float-end" th:href="@{/areas-medicas/agregar}">NUEVO</a>
+		<br>
+		</br>
+        <div class="row">            
+            <table class="table table-striped table-bordered table-condensed table-hover" id="tablaAreasMedicas">
+                <thead>
+                    <tr>
+						<th style="width: 20%; text-align: center;">Acciones</th>
+                        <th style="width: 20%;  text-align: center;">Id</th>
+						<th style="width: 20%; text-align: center;">Nombre</th>						
+                    </tr>
+                </thead>
+                <tbody>
+				<tr th:each="areamedica : ${listaAreasMedicas}">
+					<td><a class="btn btn-warning" th:href="@{/areas-medicas/editar/{id}(id=${areamedica.idAreaMedica})}">Editar</a>
+					&nbsp;&nbsp;&nbsp;
+					<a class="btn btn-danger" th:href="@{/areas-medicas/eliminar/{id}(id=${areamedica.idAreaMedica})}">Eliminar</a>
+					</td>
+					<td style="text-align: center;"th:text = "${areamedica.idAreaMedica}">Id</td> 
+					<td style="text-align: center;" th:text = "${areamedica.nombre}">Nombre</td>
+					
+				</tr>
+			</tbody>
+            </table>
+       </div>
+			      
+</div>
+			</div>
+		</section>
+	</main>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+
+</html>

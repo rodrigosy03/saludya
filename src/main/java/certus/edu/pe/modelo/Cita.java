@@ -1,7 +1,7 @@
 package certus.edu.pe.modelo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,7 +38,7 @@ public class Cita implements Serializable {
     
     @Basic(optional = false)
     @Column(name = "fechaHora")
-    private Date fechaHora;
+    private LocalDateTime fechaHora;
     
     @Basic(optional = false)
     @Column(name = "descripcion")

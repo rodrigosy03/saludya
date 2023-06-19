@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="layout/layout :: head">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+<style>
+.main {
+	padding-top: 20px;
+}
+
+.pagetitle {
+	margin-bottom: 20px;
+}
+
+.breadcrumb {
+	background-color: transparent;
+	margin-bottom: 0;
+}
+
+.card-title {
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.table-responsive {
+	margin-bottom: 20px;
+	overflow-x: auto;
+}
+
+.table td, .table th {
+	white-space: nowrap;
+}
+</style>
+</head>
+
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<aside th:replace="layout/layout :: sidebar"></aside>
+	<main id="main" class="main">
+		<div class="container">
+			<div class="pagetitle">
+				<h1 th:text="${titulo}"></h1>
+				<nav>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="/saludYa/home">Inicio</a></li>
+						<li class="breadcrumb-item"><a th:href="@{/centros-medicos/listar}">Centros de Salud</a></li>
+						<li class="breadcrumb-item active">Tabla</li>
+					</ol>
+				</nav>
+			</div>
+			<section class="section">
+
+				<div class="col-lg">
+					<div class="card">
+						<div class="card-body">
+
+							<div class="table-responsive">
+								<table id="tabla2" class="table table-hover">
+
+									<div class="row">
+										<div th:each="centros: ${listaCentrosMedicos}"
+											class="col-xxl-4 col-md-6">
+											<div class="card info-card sales-card">
+												<div class="card-body">
+													<h5 class="card-title">
+														Centros Médicos <span> | </span>
+														<h3 th:text="${centros.nombre}"></h3>
+													</h5>
+													<div class="d-flex align-items-center wraper">
+														<a th:href="@{/centros-medicos/listar}"><svg
+																xmlns="http://www.w3.org/2000/svg" width="16"
+																height="16" fill="currentColor" class="bi bi-shop"
+																viewBox="0 0 16 16">
+																<path
+																	d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
+														</svg></a>
+													</div>
+
+													<h6>Direccion:</h6>
+													<h6 th:text="${centros.direccion}"></h6>
+													
+													<div>
+														<h6>Ciudad:</h6>
+														<h6 th:text="${centros.ciudad}"></h6>
+														
+													</div>
+													<div>
+														<h6>Teléfono:</h6>
+														<h6 th:text="${centros.telefono}"></h6>
+														
+													</div>
+														<a th:href="@{/centros-medicos/editar/{id}(id=${centros.idCentroMedico})}" 
+															data-toggle="tooltip" data-placement="bottom"
+															class="btn btn-primary" title="Actualizar"><i class="fas fa-edit"></i> 
+														Actualizar
+														</a>
+														
+														<a th:href="@{/centros-medicos/eliminar/{id}(id=${centros.idCentroMedico})}"
+															class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" 
+															title="Eliminar cliente">
+														Eliminar
+														</a>
+													
+													
+
+												</div>
+												
+											</div>
+											
+										</div>
+									</div>
+
+								</table>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>
+		</div>
+	</main>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script
+		src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+	<script
+		src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+	<script>
+		$(document)
+				.ready(
+						function() {
+							$("#tabla2")
+									.DataTable(
+											{
+												language : {
+													decimal : "",
+													emptyTable : "Datos no disponibles en la tabla",
+													infoEmpty : "Mostrando 0 a 0 de 0 registros",
+													infoFiltered : "(Filtrado de MAX registros totales)",
+													infoPostFix : "",
+													thousands : ",",
+													loadingRecords : "Cargando...",
+													processing : "Procesando...",
+													search : "Buscar:",
+													zeroRecords : "No se encontraron registros para la búsqueda",
+													paginate : {
+														first : "Primero",
+														last : "Último",
+														next : "Siguiente",
+														previous : "Anterior",
+													},
+													aria : {
+														sortAscending : ": Activar para ordenar ascendente",
+														sortDescending : ": Activar para ordenar descendente",
+													},
+												},
+												lengthMenu : [ 10, 25, 50, 75,
+														100 ],
+												pagingType : "full_numbers",
+											});
+							$('[data-toggle="tooltip"]').tooltip();
+							$(window).resize(function() {
+								$("#tabla2").DataTable().draw();
+							});
+						});
+	</script>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+
+</html>

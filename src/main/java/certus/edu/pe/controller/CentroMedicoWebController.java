@@ -28,6 +28,7 @@ public class CentroMedicoWebController {
     public String getCentrosMedicos(Model model) {
         List<CentroMedico> centrosMedicos = centroMedicoServicio.buscarTodos();
         model.addAttribute("listaCentrosMedicos", centrosMedicos);
+        System.out.println("Lista" + centrosMedicos);
         return "moduloCentroMedico/listarCentrosMedicos";
     }
 

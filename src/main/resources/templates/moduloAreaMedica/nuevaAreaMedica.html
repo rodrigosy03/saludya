@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head th:replace="layout/layout :: head">
+</head>
+
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<aside th:replace="layout/layout :: sidebar"></aside>
+	<main id="main" class="main">
+		<div class="pagetitle">
+			<h1>NUEVA AREA MEDICA</h1>
+			<nav>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/saludYa/home">Home</a></li>
+					<li class="breadcrumb-item active">AreaMedica</li>
+				</ol>
+			</nav>
+		</div>
+		<section class="section dashboard">
+			<div class="row">
+				<div align="center">
+		<form action="#" th:action="@{/areas-medicas/guardar}" th:object="${areaMedica}" method="post">
+			<table border="0" cellpadding="10">
+				
+				<tr>
+					<td><label class="form-label">Nombre:</label></td>
+					<td><input class="form-control" type="text" th:field="*{nombre}" /></td>
+				</tr>
+				
+				
+				
+				<tr>
+					<td colspan="2"><button class="btn btn-success"type="submit"> Guardar </button></td>
+				</tr>		
+				<tr> <td ><a class="btn btn-info" th:href="@{/areas-medicas/listar}">Cancelar</a></td> </tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

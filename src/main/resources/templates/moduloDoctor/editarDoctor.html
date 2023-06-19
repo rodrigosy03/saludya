@@ -12,7 +12,7 @@
 			<h1>Nuevo Usuario</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="/ventasOnline">Home</a></li>
+					<li class="breadcrumb-item"><a href="/saludYa/home">Home</a></li>
 					<li class="breadcrumb-item active">Dashboard</li>
 				</ol>
 			</nav>
@@ -20,12 +20,12 @@
 		<section class="section dashboard">
 			<div class="row">
 				<div align="center">
-		<form action="#" th:action="@{/usuarios/guardar}" th:object="${usuario}" method="post">
+		<form action="#" th:action="@{/doctores/guardar}" th:object="${doctor}" method="post">
 			<table border="0" cellpadding="10">
 				
 				<tr>
 					<td><label class="form-label">Id:</label></td>
-					<td><input class="form-control" type="text" th:field="*{idUsuario}" readonly="readonly" /></td>
+					<td><input class="form-control" type="text" th:field="*{idDoctor}" readonly="readonly" /></td>
 				</tr>
 				
 				<tr>
@@ -39,23 +39,30 @@
 				</tr>
 			
 				<tr>
-					<td><label class="form-label">Correo:</label></td></td>
-					<td><input  class="form-control"type="email" th:field="*{correo}" /></td>
+					<td><label class="form-label">Centro Médico:</label></td></td>
+					<td>
+					<select class="form-control" id="idEstudiante" th:field="*{centroMedico.idCentroMedico}">
+					<option th:each="centroMedico : ${listaCentrosMedicos}"
+							th:value="${centroMedico.idCentroMedico}" th:text="${centroMedico.nombre}">
+					</option>
+					</select>
+			    </td>
+					
 				</tr>
 				
 				<tr>
-					<td><label class="form-label">Password:</label></td>
-					<td><input class="form-control" type="text" th:field="*{contrasena}" /></td>
+					<td><label class="form-label">Especialidades:</label></td>
+					<td><input class="form-control" type="text" th:field="*{especialidad}" /></td>
 				</tr>
 				
 				
 				<tr>
 					<td colspan="2"><button class="btn btn-success"type="submit"> Guardar </button></td>
 				</tr>		
-				<tr> <td ><a class="btn btn-info" th:href="@{/usuarios/listar}">Cancelar</a></td> </tr>
+				<tr> <td ><a class="btn btn-info" th:href="@{/doctores/listar}">Cancelar</a></td> </tr>
 			</table>
 		</form>
-			</div>
+	</div>
 			</div>
 		</section>
 	</main>
