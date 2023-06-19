@@ -29,7 +29,7 @@ public class UsuarioService {
             usuarioExistente.setNombre(usuarioActualizado.getNombre());
             usuarioExistente.setApellido(usuarioActualizado.getApellido());
             usuarioExistente.setCorreo(usuarioActualizado.getCorreo());
-            usuarioExistente.setContrasena(null);
+            usuarioExistente.setContrasena(usuarioActualizado.getContrasena());
 
             return usuarioRepository.save(usuarioExistente);
         }

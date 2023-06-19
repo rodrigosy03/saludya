@@ -56,14 +56,14 @@
                 </thead>
                 <tbody>
 				<tr th:each="usuarios : ${listarUsuarios}">
-					<td th:text = "${usuarios.idusuario}">Id</td> 
+					<td th:text = "${usuarios.idUsuario}">Id</td> 
 					<td th:text = "${usuarios.nombre}">Nombre</td>
 					<td th:text = "${usuarios.apellido}">Apellido</td>  
 					<td th:text = "${usuarios.correo}">Correo</td> 
-					<td th:text = "${usuarios.password}">Contra</td>  
-					<td><a class="btn btn-warning" th:href="@{/usuarios/actualizar/{id}(id=${usuarios.idusuario})}">Editar</a>
+					<td th:text = "${usuarios.contrasena}">Contra</td>  
+					<td><a class="btn btn-warning" th:href="@{/usuarios/actualizar/{id}(id=${usuarios.idUsuario})}">Editar</a>
 					&nbsp;&nbsp;&nbsp;
-					<a class="btn btn-danger" th:href="@{/usuarios/eliminar/{id}(id=${usuarios.idusuario})}">Eliminar</a>
+					<a class="btn btn-danger" th:href="@{/usuarios/eliminar/{id}(id=${usuarios.idUsuario})}">Eliminar</a>
 					</td>
 				</tr>
 			</tbody>
