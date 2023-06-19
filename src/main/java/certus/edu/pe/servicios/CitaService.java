@@ -27,6 +27,7 @@ public class CitaService {
         Cita citaExistente = citaRepository.findById(citaActualizada.getIdCita()).orElse(null);
 
         if (citaExistente != null) {
+        	citaExistente.setIdCita(citaActualizada.getIdCita());
             citaExistente.setUsuario(citaActualizada.getUsuario());
             citaExistente.setDoctor(citaActualizada.getDoctor());
             citaExistente.setFechaHora(citaActualizada.getFechaHora());
