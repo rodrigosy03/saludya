@@ -56,7 +56,7 @@
                 <a class="nav-link" th:href="@{/ordenes/listarOrdenes}">Ordenes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" th:href="@{/opiniones/listarOpinion}">Reseñas</a>
+                <a class="nav-link" th:href="@{/opiniones/listarOpinion}">Reseï¿½as</a>
               </li>
             </ul>
           </div>
@@ -99,8 +99,8 @@
       <tbody>
       <tr th:each="citas : ${listaCitas}">
         <td th:text = "${citas.idCita}">Id</td>
-        <td th:text = "${citas.usuario.idUsuario}">Nombre</td>
-        <td th:text = "${citas.doctor.idDoctor}">Apellido</td>
+        <td th:text = "${citas.usuario.nombre}">Nombre</td>
+        <td th:text = "${citas.doctor.nombre}">Apellido</td>
         <td th:text = "${citas.fechaHora}">Correo</td>
         <td th:text = "${citas.descripcion}">Contra</td>
         <td><a class="btn btn-warning" th:href="@{/citas/editar/{id}(id=${citas.idCita})}">Editar</a>
