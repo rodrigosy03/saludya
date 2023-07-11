@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'saludyaAppweb'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4D13F176C86045889DE93F57914D50F0 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_25067C67823C488CAB1D7BAB23518067 }}
           package: '*.jar'
